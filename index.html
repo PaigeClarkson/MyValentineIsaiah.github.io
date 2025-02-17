@@ -6,33 +6,39 @@
     <title>Happy Valentines Day!</title>
 </head>
 <body>
-    <h1>How long has Isaiah been my valentine?</h1>
+    <h1>Happy Valentines Day!</h1>
+    
+    <h2>How long has Isaiah been my valentine?</h2>
 
     <!-- Input form to get the year -->
     <label for="yearInput">What year is it?</label>
     <input type="number" id="yearInput" placeholder="Enter year">
     <button onclick="calculateValentineYear()">Submit Year</button>
 
-    <h2>How much does Paige love Isaiah?</h2>
-
-    <!-- Multiple choice question -->
-    <form id="loveForm">
-        <input type="radio" id="meh" name="love" value="meh">
-        <label for="meh">meh</label><br>
-
-        <input type="radio" id="justALittle" name="love" value="just a little">
-        <label for="justALittle">just a little</label><br>
-
-        <input type="radio" id="onlySometimes" name="love" value="only sometimes">
-        <label for="onlySometimes">only sometimes</label><br>
-
-        <input type="radio" id="aLot" name="love" value="a lot!">
-        <label for="aLot">a lot!</label><br>
-    </form>
-    <button onclick="checkLove()">Submit Love Answer</button>
-
     <p id="output"></p>
-    <p id="loveFeedback"></p>
+
+    <!-- Hide the second question initially -->
+    <div id="loveQuestion" style="display:none;">
+        <h2>How much does Paige love Isaiah?</h2>
+
+        <!-- Multiple choice question -->
+        <form id="loveForm">
+            <input type="radio" id="meh" name="love" value="meh">
+            <label for="meh">meh</label><br>
+
+            <input type="radio" id="justALittle" name="love" value="just a little">
+            <label for="justALittle">just a little</label><br>
+
+            <input type="radio" id="onlySometimes" name="love" value="only sometimes">
+            <label for="onlySometimes">only sometimes</label><br>
+
+            <input type="radio" id="aLot" name="love" value="a lot!">
+            <label for="aLot">a lot!</label><br>
+        </form>
+        
+        <button onclick="checkLove()">Submit Love Answer</button>
+        <p id="loveFeedback"></p>
+    </div>
 
     <script>
         function calculateValentineYear() {
@@ -44,6 +50,9 @@
 
             // Display the result
             document.getElementById("output").innerText = "Isaiah has been Paige's valentine " + valentineYear + " years in a row :)";
+
+            // Show the second question after the first is answered
+            document.getElementById("loveQuestion").style.display = "block";
         }
 
         function checkLove() {
@@ -54,7 +63,7 @@
                 if (loveAnswer.value === "a lot!") {
                     document.getElementById("loveFeedback").innerText = "Correct! Paige loves Isaiah a lot!";
                 } else {
-                    document.getElementById("loveFeedback").innerText = "Oops! That's not quite right. The correct answer is 'a lot!'";
+                    document.getElementById("loveFeedback").innerText = "WRONG!";
                 }
             } else {
                 document.getElementById("loveFeedback").innerText = "Please select an answer.";
@@ -63,3 +72,4 @@
     </script>
 </body>
 </html>
+
