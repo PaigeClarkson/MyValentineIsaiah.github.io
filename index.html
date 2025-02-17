@@ -3,17 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Year Program</title>
+    <title>Happy Valentines Day!</title>
 </head>
 <body>
-    <h1>Valentine Year Program</h1>
+    <h1>How long has Isaiah been my valentine?</h1>
 
     <!-- Input form to get the year -->
     <label for="yearInput">What year is it?</label>
     <input type="number" id="yearInput" placeholder="Enter year">
-    <button onclick="calculateValentineYear()">Submit</button>
+    <button onclick="calculateValentineYear()">Submit Year</button>
+
+    <h2>How much does Paige love Isaiah?</h2>
+
+    <!-- Multiple choice question -->
+    <form id="loveForm">
+        <input type="radio" id="meh" name="love" value="meh">
+        <label for="meh">meh</label><br>
+
+        <input type="radio" id="justALittle" name="love" value="just a little">
+        <label for="justALittle">just a little</label><br>
+
+        <input type="radio" id="onlySometimes" name="love" value="only sometimes">
+        <label for="onlySometimes">only sometimes</label><br>
+
+        <input type="radio" id="aLot" name="love" value="a lot!">
+        <label for="aLot">a lot!</label><br>
+    </form>
+    <button onclick="checkLove()">Submit Love Answer</button>
 
     <p id="output"></p>
+    <p id="loveFeedback"></p>
 
     <script>
         function calculateValentineYear() {
@@ -25,6 +44,21 @@
 
             // Display the result
             document.getElementById("output").innerText = "Isaiah has been Paige's valentine " + valentineYear + " years in a row :)";
+        }
+
+        function checkLove() {
+            // Get the selected answer from the radio buttons
+            let loveAnswer = document.querySelector('input[name="love"]:checked');
+
+            if (loveAnswer) {
+                if (loveAnswer.value === "a lot!") {
+                    document.getElementById("loveFeedback").innerText = "Correct! Paige loves Isaiah a lot!";
+                } else {
+                    document.getElementById("loveFeedback").innerText = "Oops! That's not quite right. The correct answer is 'a lot!'";
+                }
+            } else {
+                document.getElementById("loveFeedback").innerText = "Please select an answer.";
+            }
         }
     </script>
 </body>
