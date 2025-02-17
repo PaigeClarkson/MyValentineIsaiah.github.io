@@ -40,6 +40,15 @@
         <p id="loveFeedback"></p>
     </div>
 
+    <!-- Hide the date input and week calculation initially -->
+    <div id="weekQuestion" style="display:none;">
+        <h2>When did Paige know she loved Isaiah?</h2>
+        <label for="dateInput">Enter a date (YYYY-MM-DD):</label>
+        <input type="date" id="dateInput">
+        <button onclick="calculateWeeks()">Submit Date</button>
+        <p id="weekOutput"></p>
+    </div>
+
     <script>
         function calculateValentineYear() {
             // Get the year input by the user
@@ -68,6 +77,27 @@
             } else {
                 document.getElementById("loveFeedback").innerText = "Please select an answer.";
             }
+
+            // Show the date input and week calculation after love question
+            document.getElementById("weekQuestion").style.display = "block";
+        }
+
+        function calculateWeeks() {
+            // Get the input date from the user
+            let dateInput = document.getElementById("dateInput").value;
+
+            // Parse the input date
+            let inputDate = new Date(dateInput);
+            let knownDate = new Date("2022-10-29"); // October 29, 2022
+
+            // Calculate the difference in milliseconds
+            let diffTime = inputDate - knownDate;
+
+            // Convert milliseconds to weeks
+            let diffWeeks = diffTime / (1000 * 60 * 60 * 24 * 7);
+
+            // Display the result
+            document.getElementById("weekOutput").innerText = `Paige knew she loved Isaiah ${Math.round(diffWeeks)} weeks ago.`;
         }
     </script>
 </body>
