@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Year Program</title>
+</head>
+<body>
+    <h1>Valentine Year Program</h1>
+
+    <!-- Input form to get the year -->
+    <label for="yearInput">What year is it?</label>
+    <input type="number" id="yearInput" placeholder="Enter year">
+    <button onclick="calculateValentineYear()">Submit</button>
+
+    <p id="output"></p>
+
+    <script>
+        function calculateValentineYear() {
+            // Get the year input by the user
+            let year = document.getElementById("yearInput").value;
+
+            // Calculate the number of years since 2022
+            let valentineYear = year - 2022;
+
+            // Display the result
+            document.getElementById("output").innerText = "Isaiah has been Paige's valentine " + valentineYear + " years in a row :)";
+        }
+    </script>
+</body>
+</html>
